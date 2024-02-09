@@ -8,7 +8,7 @@ import (
 
 func main() {
 	origin := "http://localhost/"
-	url := "wss://7m2p4u8v02.execute-api.us-east-1.amazonaws.com/deleteMe/" //from localstack
+	url := "wss://7m2p4u8v02.execute-api.us-east-1.amazonaws.com/deleteMe/"
 	_, err := websocket.Dial(url, "", origin)
 	if err != nil {
 		// log.Fatal(err)

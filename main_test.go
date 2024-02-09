@@ -13,7 +13,7 @@ func TestWebsocketErrorIsNil(t *testing.T) {
 	//ARRANGE
 
 	origin := "http://localhost/"
-	url := "wss://7m2p4u8v02.execute-api.us-east-1.amazonaws.com/deleteMe/" //from localstack
+	url := "wss://7m2p4u8v02.execute-api.us-east-1.amazonaws.com/deleteMe/" //would get from localstack
 
 	//ACT
 	ws, err := websocket.Dial(url, "", origin)
@@ -24,6 +24,7 @@ func TestWebsocketErrorIsNil(t *testing.T) {
 	}
 
 	//ASSERT
-	require.Nil(err, "Expected err to be nil")
 	require.Truef(ws.IsClientConn(), "Expected value to be true")
+	require.Nil(err, "Expected err to be nil")
+
 }
