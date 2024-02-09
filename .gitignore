@@ -28,3 +28,13 @@ crash.log
 crash.*.log
 *.tfvars
 *.tfvars.json
+
+# Local .terraform directories
+**/.terraform/*
+
+# hidden terraform files
+**/.terraform*
+
+# testing artifacts
+test_files/**/main.zip
+test_files/**/main
