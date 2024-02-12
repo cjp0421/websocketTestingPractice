@@ -16,15 +16,19 @@ func TestWebsocketErrorIsNil(t *testing.T) {
 	url := "wss://7m2p4u8v02.execute-api.us-east-1.amazonaws.com/deleteMe/" //would get from localstack
 
 	//ACT
-	_, err := websocket.Dial(url, "", origin)
+	ws, err := websocket.Dial(url, "", origin)
 	if err != nil {
-		// log.Fatal(err)
-		//on a bad connection, an error here has a value
+		// on a bad connection, error here has a value
 		fmt.Println("Something happened: ", err)
+		// added to stop this error: runtime error: invalid memory address or nil pointer dereference
+		require.Nil(err, "Expected err to be nil")
+		require.Nil(ws, "Expected ws to be nil")
+		return // stop the test execution here
 	}
+	defer ws.Close()
 
 	//ASSERT
-	// require.Truef(ws.IsClientConn(), "Expected value to be true")
+	require.Truef(ws.IsClientConn(), "Expected value to be true")
 	require.Nil(err, "Expected err to be nil")
 
 }
